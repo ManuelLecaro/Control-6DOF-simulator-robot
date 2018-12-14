@@ -18,6 +18,14 @@ baudRate = 9600
 
 servos = serial.Serial(port, baudRate, timeout=1)
 
+def send_raw_data(data):
+    '''Send value to the direct channel of communication
+        with the servo
+        Parameters
+        ----------
+    data: float
+        value to send directly to servo no more than 5 digits'''
+    servos.write(chr(data))
 
 def move(servo, angle):
     '''Movement of servos according to an angle.
