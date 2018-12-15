@@ -25,12 +25,13 @@ def getOrientationData(lines):
     return (vOrientation, hOrientation)
 
 def getData(lines):
-    datalines = lines[37:]
+    datalines = lines[36:]
     data = []
     for line in datalines:
-        line_fixed = re.sub('(?<=E-\d)', ' ', line)
+        line_fixed = re.sub('(?<=E[-+]\d)', ' ', line)
         line_stripped = re.sub(' +', ' ', line_fixed).strip().split(" ")
-        data = data + line_stripped
+        for number in line_stripped:
+            data.append(float(number))
     return data
 
 
