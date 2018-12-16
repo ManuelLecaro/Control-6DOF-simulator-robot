@@ -18,11 +18,18 @@ def readSMCFile(ruta_archivo):
 
 def getOrientationData(lines):
 
+    orientation = ""
     orientation_data = lines[12]
     orientation_data = re.sub(' +', ' ', orientation_data).strip().split(" ")
     vOrientation = orientation_data[4]
     hOrientation = orientation_data[5]
-    return (vOrientation, hOrientation)
+    if (vOrientation == "90" and hOrientation == "360"):
+        orientation = "X"
+    elif (vOrientation == "0" and hOrientation == "-32768"):
+        orientation = "Y"
+    elif (vOrientation == "0"):
+        orientation = "Z"
+    return orientation
 
 def getData(lines):
     datalines = lines[36:]
