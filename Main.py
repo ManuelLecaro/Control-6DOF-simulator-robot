@@ -9,7 +9,7 @@ import PyQt5.QtCore as cor
 import PyQt5.QtGui as gui
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QBoxLayout, QAction,QHBoxLayout,QFileDialog
 from converter import *
-
+from loader import *
 
 class Main(QWidget):
     def __init__(self):
@@ -72,8 +72,8 @@ class Main(QWidget):
 
     def simulate(self):
         if (self.lblFileName.text().strip()!=""):
-            resultado=readSMCFile(self.lblFileName.text()).get('data')
-            print(resultado)
+            result=readSMCFile(self.lblFileName.text()).get('data')
+            load(result)
 
 
 if __name__ == '__main__':
