@@ -10,6 +10,7 @@ import PyQt5.QtGui as gui
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QBoxLayout, QAction,QHBoxLayout,QFileDialog
 from converter import *
 
+
 class Main(QWidget):
     def __init__(self):
         super().__init__()
@@ -51,6 +52,12 @@ class Main(QWidget):
         boxlayout.setAlignment(cor.Qt.AlignCenter)
         boxlayout.setSpacing(20)
 
+
+        btnUpload = QPushButton('Upload files')
+        btnUpload.setFixedSize(100, 40)
+        btnUpload.setFont(gui.QFont("Verdana",10))
+        btnUpload.clicked.connect(self.openFileChooser)
+
         self.resize(800,500)
         self.setWindowTitle('Earthquake Simulator')
         self.show()
@@ -66,7 +73,7 @@ class Main(QWidget):
     def simulate(self):
         if (self.lblFileName.text().strip()!=""):
             resultado=readSMCFile(self.lblFileName.text()).get('data')
-            print(resultado)
+            print(resultado)  
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
