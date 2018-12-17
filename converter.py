@@ -1,6 +1,5 @@
 import re
 
-
 def readSMCFile(ruta_archivo):
     """
     Lee un archivo SMC y extrae la información de orientación y los valores del dataframe
@@ -42,9 +41,9 @@ def getData(lines):
     return data
 
 
-result = readSMCFile("archivos_smc\OTAV.HN1.IU.20_a.smc")
+'''result = readSMCFile("archivos_smc\OTAV.HN1.IU.20_a.smc")
 
-print(result.get("orientation"))
-print(result.get("data"))
+print('orientacion',result.get("data"))
+print(result.get("data"))'''
 
 
