@@ -73,7 +73,8 @@ class Main(QWidget):
     def simulate(self):
         if (self.lblFileName.text().strip()!=""):
             resultado=readSMCFile(self.lblFileName.text()).get('data')
-            print(resultado)  
+            print(resultado)
+              
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
