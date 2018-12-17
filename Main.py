@@ -27,7 +27,7 @@ class Main(QWidget):
 
         lblWelcome = QLabel('Welcome to the earthquake simulation system')
         lblWelcome.setFont(gui.QFont("Verdana", 14))
-        lblSubtitle = QLabel('Download the .zip files via strongmotioncenter.org and upload them here')
+        lblSubtitle = QLabel('Upload your .smc files here')
         lblSubtitle.setFont(gui.QFont("Verdana",10))
 
         btnUpload = QPushButton('Upload files')
@@ -74,7 +74,7 @@ class Main(QWidget):
         if (self.lblFileName.text().strip()!=""):
             resultado=readSMCFile(self.lblFileName.text()).get('data')
             print(resultado)
-              
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
