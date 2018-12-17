@@ -66,7 +66,7 @@ class Main(QWidget):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
         fileName , _= QFileDialog.getOpenFileName(None, "QFileDialog.getOpenFileName()", "",
-                                                  "smc File (*.smc);;Python Files (*.py)", options=options)
+                                                  "smc File (*.smc);;smc File (*.smc)", options=options)
         
         self.lblFileName.setText(fileName)
 
