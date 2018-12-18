@@ -1,4 +1,5 @@
 <img src="resources/header.png" align="center" />
+
 # Control-6DOF-simulator-robot
 > Control of a seismic simulator parallel robot of 6DOF 
 
