@@ -5,25 +5,75 @@ uses PyQT5
 
 
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel
+import PyQt5.QtCore as cor
+import PyQt5.QtGui as gui
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QBoxLayout, QAction,QHBoxLayout,QFileDialog
+from converter import *
+#from loader import *
 
 class Main(QWidget):
     def __init__(self):
         super().__init__()
-
+        self.lblFileName = QLabel(None,self)
         self.initUI()
 
-    def initUI(self):
-        lbl = QLabel('Bienvenido al robot simuldor de sismos', self)
+    def openFileChooser(self):
+        print("TODO: Open a window to choose the .zip file")
 
-        btn = QPushButton('Subir archivos', self)
-        btn.resize(btn.sizeHint())
+    # Function to add widgets to the main window
+    def initUI(self):
+        boxlayout = QBoxLayout(QBoxLayout.TopToBottom)
+        self.setLayout(boxlayout)
+
+        lblWelcome = QLabel('Welcome to the earthquake simulation system')
+        lblWelcome.setFont(gui.QFont("Verdana", 14))
+        lblSubtitle = QLabel('Upload your .smc files here')
+        lblSubtitle.setFont(gui.QFont("Verdana",10))
+
+        btnUpload = QPushButton('Upload files')
+        btnUpload.setFixedSize(100, 40)
+        btnUpload.setFont(gui.QFont("Verdana",10))
+        btnUpload.clicked.connect(self.openFileChooser)
+
+        btnSimulate = QPushButton('Simulate')
+        btnSimulate.setFixedSize(100, 40)
+        btnSimulate.setFont(gui.QFont("Verdana",10))
+        btnSimulate.clicked.connect(self.simulate)  
+
+        hbox_FileChooser = QHBoxLayout()
+        hbox_FileChooser.addWidget(btnUpload);
+        hbox_FileChooser.addWidget(self.lblFileName);
+
+        boxlayout.addWidget(lblWelcome, 0, cor.Qt.AlignCenter)
+        boxlayout.addWidget(lblSubtitle, 0, cor.Qt.AlignCenter)
+
+        boxlayout.addLayout(hbox_FileChooser,0)
+        boxlayout.addWidget(btnSimulate, 0, cor.Qt.AlignCenter)
+        boxlayout.setAlignment(cor.Qt.AlignCenter)
+        boxlayout.setSpacing(20)
+
+
+        btnUpload = QPushButton('Upload files')
+        btnUpload.setFixedSize(100, 40)
+        btnUpload.setFont(gui.QFont("Verdana",10))
+        btnUpload.clicked.connect(self.openFileChooser)
 
         self.resize(800,500)
         self.setWindowTitle('Earthquake Simulator')
         self.show()
 
+    def openFileChooser(self):
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        fileName , _= QFileDialog.getOpenFileName(None, "QFileDialog.getOpenFileName()", "",
+                                                  "smc File (*.smc);;smc File (*.smc)", options=options)
+        
+        self.lblFileName.setText(fileName)
 
+    def simulate(self):
+        if (self.lblFileName.text().strip()!=""):
+            result=readSMCFile(self.lblFileName.text()).get('data')
+            load(result)
 
 
 if __name__ == '__main__':

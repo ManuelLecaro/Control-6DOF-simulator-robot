@@ -1,5 +1,5 @@
 import re
-import servo
+#import servo
 
 def readSMCFile(ruta_archivo):
     """
@@ -46,9 +46,9 @@ def uploading(data):
         servo.send_raw_data(i)
 
 
-result = readSMCFile("archivos_smc\OTAV.HN1.IU.20_a.smc")
+'''result = readSMCFile("archivos_smc\OTAV.HN1.IU.20_a.smc")
 
-print(result.get("orientation"))
-print(result.get("data"))
+print('orientacion',result.get("data"))
+print(result.get("data"))'''
 
 
