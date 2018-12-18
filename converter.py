@@ -1,5 +1,5 @@
 import re
-
+import servo
 
 def readSMCFile(ruta_archivo):
     """
@@ -40,6 +40,10 @@ def getData(lines):
         for number in line_stripped:
             data.append(float(number))
     return data
+
+def uploading(data):
+    for i in data:
+        servo.send_raw_data(i)
 
 
 result = readSMCFile("archivos_smc\OTAV.HN1.IU.20_a.smc")
