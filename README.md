@@ -3,7 +3,7 @@
 # Control-6DOF-simulator-robot
 > Control of a seismic simulator parallel robot of 6DOF 
 
-This system was developed in Python and uses Pyserial to connect to an Arduino (robot brain) connecting with python for data sending of .smc files
+This system was developed in Python and uses Pyserial to connect to an Arduino (robot brain). The data to simulate the robot's movement is extracted from .smc files downloaded via strongmotioncenter.org
 
 ## Developed by
 - Lucio Arias
