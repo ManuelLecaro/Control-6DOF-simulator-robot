@@ -16,7 +16,7 @@ else:
 
 #bauds rate use, generally 9600
 baudRate = 9600
-servos = serial.Serial(port, baudRate, timeout=1)
+servos = serial.Serial("COM5", baudRate, timeout=1)
 
 
 
@@ -27,7 +27,7 @@ def send_raw_data(data):
         ----------
     data: float
         value to send directly to servo no more than 5 digits'''
-    servos.write(int(data))
+    servos.write(data)
 #def move(servo, angle):
     '''Movement of servos according to an angle.
        Parameters

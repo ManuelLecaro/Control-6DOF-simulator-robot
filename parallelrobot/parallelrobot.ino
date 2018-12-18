@@ -18,6 +18,9 @@
 //variables used for proper show of positions on LCD
 char shown=0, showPos=0, useIrda=0;
 unsigned long time;
+unsigned long tiempo_actual,tiempo_restante;
+const long intervalo = 50;
+float dato_f;
 
 char cadena[5]; //Creamos un array que almacenará los caracteres que escribiremos en la consola del PC. Le asignamos  un tope de caracteres, en este caso 30
 byte posicion=0;  //Variable para cambiar la posición de los caracteres del array
@@ -170,7 +173,6 @@ unsigned char setPos(float pe[]){
 
 
 void setup() {
-  // put your setup code here, to run once:
   //attachment of servos to PWM digital pins of arduino
    servo[0].attach(3, MIN, MAX);
    servo[1].attach(5, MIN, MAX);
@@ -186,12 +188,26 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+ float valor;
+ unsigned char buffer[4];
 
-  if(Serial.available()){ //Nos dice si hay datos dentro del buffer
-    valor=Serial.read(); //Recibimos el valor enviado por el programa en Python
-  }
-   if (valor > 5){
+ // If we read enough bytes, unpacked it
+ if (Serial.readBytes(buffer, sizeof(float)) == sizeof(float)){
+     memcpy(&valor, buffer, sizeof(float));
+ }
+ else{
+     // I/O error - no data, not enough bytes, etc.
+     valor=0;
+ }
+   //This algorithm to set de position of servos has to be revised
+   tiempo_actual = millis();
+   if ((tiempo_actual - tiempo_restante)>intervalo){
+      tiempo_restante=tiempo_actual;
+      dato_f = (2.69*(valor));
+      arr[1]=dato_f;
+      setPos(arr);
+   }
+   /*if (valor > 5){
       arr[5]=radians(5);
       arr[4]=radians(0);
       arr [3]= radians(3);
@@ -203,5 +219,5 @@ void loop() {
       arr[1]=-10;
       setPos(arr);
       delay(500);
-   }
+   }*/
 }
