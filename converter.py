@@ -26,8 +26,8 @@ def getOrientationData(lines):
     if (vOrientation == "90" and hOrientation == "360"):
         orientation = "X"
     elif (vOrientation == "0" and hOrientation == "-32768"):
-        orientation = "Y"
-    elif (vOrientation == "0"):
+        orientation = "Z"
+    elif (vOrientation == "90" and hOrientation == "90"):
         orientation = "Z"
     return orientation
 
