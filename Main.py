@@ -9,7 +9,7 @@ import PyQt5.QtCore as cor
 import PyQt5.QtGui as gui
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QBoxLayout, QAction,QHBoxLayout,QFileDialog
 from converter import *
-from loader import *
+#from loader import *
 
 class Main(QWidget):
     def __init__(self):

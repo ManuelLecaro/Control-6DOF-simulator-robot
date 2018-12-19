@@ -33,7 +33,7 @@ class PlotCanvas(FigureCanvas):
         plottie = self.figure.add_subplot(111)
         plottie.plot(time,displacement, "r-")
         plottie.axis([1,2,3])
-        plottie.set_title("Displacement simulation plot")
+        plottie.title("Displacement simulation plot")
         self.draw()
 
 
