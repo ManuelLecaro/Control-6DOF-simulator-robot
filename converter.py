@@ -1,5 +1,5 @@
 import re
-#import servo
+import servo
 
 def readSMCFile(ruta_archivo):
     """
