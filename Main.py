@@ -108,7 +108,7 @@ class Main(QWidget):
         if (self.lblFileName.text().strip()!=""):
             result=readSMCFile(self.lblFileName.text()).get('data')
             displace_accel, time = servo.receive_raw_data("COM6", 0,3600) 
-            canvas.graphicCreator(displace,time, self.lblFileName)
+            canvas.graphicCreator(displace_accel,time, self.lblFileName)
             load(result)
     
     def update_gui(self, directory):
