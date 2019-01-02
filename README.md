@@ -5,6 +5,12 @@
 
 This system was developed in Python and uses Pyserial to connect to an Arduino (robot brain). The data to simulate the robot's movement is extracted from .smc files downloaded via strongmotioncenter.org
 
+## Environment dependencies
+Python libraries: pySerial, matplolib, qdarkstyle
+
+## How to deploy
+Not supported yet
+
 ## Developed by
 - Lucio Arias
 - Daniel Arroyo
